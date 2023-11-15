@@ -1,8 +1,5 @@
 <script setup>
-import ModulesSection from "../components/landing/ModulesSection";
-import FeaturesSection from "../components/landing/FeaturesSection";
 import AOS from "aos";
-import TestimonialsSection from "~~/components/landing/TestimonialsSection.vue";
 
 onMounted(() => {
   AOS.init()
@@ -27,45 +24,14 @@ onMounted(() => {
         </div>
 
         <div class="relative mx-auto flex items-center space-x-5 w-full justify-center mt-5 px-5 lg:px-0">
-          <ButtonLink href="/sidebase/welcome">
+          <ButtonLink href="/nostrocket/welcome">
             Learn More
           </ButtonLink>
-          <NuxtLink href="https://github.com/sidebase/sidebase" target="_blank" class="text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold">
+          <NuxtLink href="https://github.com/nostrocket" target="_blank" class="text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold">
             Everthing on GitHub
           </NuxtLink>
         </div>
-
-       
-        
-      </section>
-      <section class="relative py-6" data-aos="fade-up">
-        <div class="relative SidebaseContainer">
-          <div class="Heading">
-            <h1>
-              Our amazing <span class="GradientTextPurple">modules</span>!
-            </h1>
-            <p>
-              Together with our main starter, we focus on developing high quality, developer experienced oriented Nuxt 3 modules.
-            </p>
-          </div>
-          <ModulesSection />
-        </div>
-      </section>
-      <section class="relative py-6" data-aos="zoom-up">
-       
-        <div class="relative SidebaseContainer">
-          <div class="Heading">
-            <h1>
-              What do others think of <span class="GradientText">sidebase</span>?
-            </h1>
-            <p>
-              The opinions of the community matter a lot to us! Have a look at what other developers have said about sidebase.
-            </p>
-          </div>
-          <TestimonialsSection />
-        </div>
-      </section>
-      
+      </section> 
     </div>
   </div>
 </template>
