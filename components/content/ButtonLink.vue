@@ -30,14 +30,14 @@ defineProps({
   line-height: 3rem;
   font-weight: bold;
   color: white;
-  background-image: linear-gradient(160deg, #059669, #059669);
+  background-image: linear-gradient(160deg, #8c2df9, #9881e6);
   border-radius: 0.75rem;
   cursor: pointer;
-  user-select: none;
-  transition: box-shadow 0.6s;
+  transition: box-shadow 0.4s;
+  border: none;
 }
 .ButtonLink:hover {
-  box-shadow: 0 0 60px 2px #059669, 0.5rem 0.5rem 30px #059669;
+  box-shadow: 0 0 60px  #8c2df9, 0.5rem 0.5rem 30px #9881e6;
 }
 .ButtonLink:after {
   content: '';
@@ -48,14 +48,15 @@ defineProps({
   left: 2px;
   border-radius: 0.75rem;
   pointer-events: none;
+  border: none;
 }
 
 @media (prefers-color-scheme: dark) {
   .ButtonLink {
-    box-shadow: 0 0 0 0 #064e3b, 0.5rem 0.5rem 30px #13092d;
+    box-shadow: 0 0 0 0 #8c2df9, 0.5rem 0.5rem 30px #13092d;
   }
   .ButtonLink:hover {
-    box-shadow: 0 0 60px 2px #059669, 0.5rem 0.5rem 30px #059669;
+    box-shadow: 0 0 60px #8c2df9, 0.5rem 0.5rem 30px #9881e6;
   }
   .ButtonLink:after {
     background-image: linear-gradient(170deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));

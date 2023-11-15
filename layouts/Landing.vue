@@ -12,7 +12,7 @@ onMounted(() => {
       <section class="relative w-full min-h-[96vh] mt-20">
 
         <div class="max-w-5xl mx-auto text-center px-5 lg:px-0">
-          <h1 class="StaticGradientText text-6xl lg:text-7xl font-bold">
+          <h1 class="GradientTextPurple text-6xl lg:text-7xl font-bold">
             Nostrocket
           </h1>
           <h2 class="text-3xl  lg:text-5xl font-bold dark:text-white px-4">
@@ -82,7 +82,7 @@ onMounted(() => {
 }
 
 .GradientTextPurple {
-  background: linear-gradient(to right, #95b4ab 10%, #8136d4 40%, #9881e6 60%, #95b4ab 90%);
+  background: linear-gradient(to right,  #8136d4 40%, #9881e6 40%, #95b4ab 20%);
   background-size: 200% auto;
 
   color: #000;
@@ -91,19 +91,11 @@ onMounted(() => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation: shine 1s linear infinite;
   @keyframes shine {
     to {
       background-position: 200% center;
     }
   }
-}
-
-.SpinAnimation {
-  animation: linear 7000ms spin infinite;
-  transform-origin: center 35% 0;
-  filter: blur(80px);
-  opacity: 75%;
 }
 
 @keyframes spin {
@@ -115,3 +107,4 @@ onMounted(() => {
   }
 }
 </style>
+  // animation: shine 1s linear infinite;
