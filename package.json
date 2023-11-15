@@ -1,0 +1,22 @@
+{
+  "name": "nostrocket",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview"
+  },
+  "devDependencies": {
+    "@nuxt-themes/docus": "^1.9.1",
+    "@nuxtjs/plausible": "^0.2.0",
+    "@nuxtjs/tailwindcss": "^6.3.0",
+    "nuxt": "^3.1.0"
+  },
+  "dependencies": {
+    "@docsearch/js": "^3.3.2",
+    "@lehoczky/vue-termynal": "^1.3.0",
+    "aos": "^2.3.4"
+  }
+}
