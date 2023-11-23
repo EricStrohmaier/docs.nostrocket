@@ -1,6 +1,6 @@
 export default defineAppConfig({
   docus: {
-    title: 'Nostrocket! | a hyper-efficient rocket booster for your project',
+    title: 'Nostrocket',
     description: 'a hyper-efficient rocket booster for your project',
     url: 'https://nostrocket.org/',
     socials: {

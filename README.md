@@ -1,4 +1,7 @@
 
+This will be the all you need to know about Nostrocket.org place be!
+
+
 
 ## Installation
 
