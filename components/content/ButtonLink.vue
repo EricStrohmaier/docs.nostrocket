@@ -30,14 +30,14 @@ defineProps({
   line-height: 3rem;
   font-weight: bold;
   color: white;
-  background-image: linear-gradient(160deg, #8c2df9, #9881e6);
+  background-image: linear-gradient(160deg, #7D51FA, rgb(155, 129, 239));
   border-radius: 0.75rem;
   cursor: pointer;
   transition: box-shadow 0.4s;
   border: none;
 }
 .ButtonLink:hover {
-  box-shadow: 0 0 60px  #8c2df9, 0.5rem 0.5rem 30px #9881e6;
+  box-shadow: 0 0 60px  #683ddf, 0.5rem 0.5rem 30px rgb(134, 110, 212);
 }
 .ButtonLink:after {
   content: '';

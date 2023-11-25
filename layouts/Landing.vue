@@ -1,16 +1,20 @@
 <script setup>
+import { ref, onMounted } from "vue";
 import AOS from "aos";
-import { getHashtags } from "~~/lib/Nostr";
+import { getNostrocketContent } from "~~/lib/Nostr";
+import Event from "~~/components/landing/Event.vue";
+
+const listEvents = ref([]);
 
 onMounted(async () => {
   AOS.init();
-  await loadHashtags(); // Use await to wait for the result
+  await loadHashtags();
 });
 
 const loadHashtags = async () => {
   try {
-    const hashtags = await getHashtags();
-    console.log("hashtags", hashtags);
+    listEvents.value = await getNostrocketContent();
+    console.log("listEvents", listEvents.value);
   } catch (error) {
     console.error("Error loading hashtags", error);
   }
@@ -54,7 +58,7 @@ const loadHashtags = async () => {
         </div>
 
         <div
-          class="relative mx-auto flex items-center space-x-5 w-full justify-center mt-5 px-5 lg:px-0"
+          class="relative mx-auto flex items-center space-x-5 w-full justify-center mt-10 px-5 lg:px-0"
         >
           <ButtonLink href="/nostrocket"> Learn More </ButtonLink>
           <NuxtLink
@@ -65,10 +69,9 @@ const loadHashtags = async () => {
             Everthing on GitHub
           </NuxtLink>
         </div>
-        <div class="max-w-5xl mx-auto p-5 lg:px-0">
-          Check out latest #nostrocket posts directly from the protocol
-          <div>event</div>
-          <div>event</div>
+        <div class="max-w-5xl mx-auto p-5 lg:px-0 mt-10">
+          <h2 class="font-bold text-2xl">Latest posts about #Nostrocket</h2>
+          <Event v-for="event in listEvents" :key="event.id" :event="event" />
         </div>
       </section>
     </div>
@@ -77,9 +80,8 @@ const loadHashtags = async () => {
 
 <style scoped>
 .GradientTextPurple {
-  background: linear-gradient(to right, #8136d4 40%, #9881e6 40%, #95b4ab 20%);
+  background: linear-gradient(to right, #7d51fa 40%, #9b84e5 40%, #a08fdb 20%);
   background-size: 200% auto;
-
   color: #000;
   background-clip: text;
   border-inline-color: transparent;

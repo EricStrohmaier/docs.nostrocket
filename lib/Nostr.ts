@@ -78,21 +78,35 @@ export const getAll = async (pubkey: string[] | undefined, kinds: number[], rela
   })
   return all
 }
-export const getHashtags = async ( relays: RelayObject = defaultRelays): Promise<string[]> => {
-  const filter: Filter<number> = {kinds: [1],limit: 100 ,search: 'nostrocket'}
-  const relayList: RelayList = getRelayList(relays, ['read'])
-  const sub: Sub = pool.sub(relayList,[filter])
-  const hashtags: string[] = []
-  const events: Ref<Event<number>[]> = ref([]); // Provide a type for events
-  sub.on('event', event => {
-    console.log('event',event); 
-    events.value = insertEventIntoDescendingList(events.value, event);
-    console.log('events',events.value);
-     events.value.push(event)
-    
-  })
-  return hashtags
-}
+
+export const getNostrocketContent = async (relays: RelayObject = defaultRelays): Promise<Event<number>[]> => {
+  const filter: Filter<number> = { kinds: [1],  search: 'nostrocket' };
+  const relayList: RelayList = getRelayList(relays, ['read']);
+  const sub: Sub = pool.sub(relayList, [filter]);
+
+  const events = ref([] as Event<number>[]);
+
+  return new Promise<Event<number>[]>((resolve) => {
+    sub.on('event', (event) => {
+      events.value = insertEventIntoDescendingList(events.value, event);
+      // console.log('listEvent', events.value);
+    });
+
+    sub.on('eose', () => {
+      const filteredEvents = events.value.filter((event) => {
+        
+        //get the nostrocket content from the content haha 
+
+        // const contentContainsNostrocket = event.content?.includes('nostrocket') || false;
+        const tagsContainNostrocket = event.tags?.some((tag) => tag[0] === 't' && tag[1] === 'nostrocket') || false;
+
+        return tagsContainNostrocket;
+        // return contentContainsNostrocket || tagsContainNostrocket;
+      });
+      resolve(filteredEvents);
+    });
+  });
+};
 
 export const getMostRecent = async (pubkey: string, kinds: number[], relays: RelayObject = defaultRelays): Promise<Event | null> => {
   if (kinds.length > 1) console.warn('getMostRecent will only return the single most recent event of all supplied kinds.')
