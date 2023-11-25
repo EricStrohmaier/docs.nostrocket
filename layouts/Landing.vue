@@ -37,19 +37,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.Heading {
-  margin: 100px 0 50px 0;
-}
-
-.Heading h1 {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.Heading p {
-  max-width: 50rem;
-  font-size: 1.3rem;
-}
 
 .StaticGradientText {
   background: linear-gradient(to right, #81F6D4 10%, #12a87b 40%, #0FCF97 60%, #81F6D4 90%);
