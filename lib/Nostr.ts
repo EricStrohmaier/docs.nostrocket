@@ -2,6 +2,8 @@ import { SimplePool, Filter, Sub, Event } from "nostr-tools"
 import { IdentityType } from "../types/IdentityType"
 import { RelayList, RelayObject, RelayReadWrite, FilterReadWrite } from "../types/NostrRelay"
 import { ContactObject } from "../types/NostrContact"
+import { insertEventIntoDescendingList } from "./helperFunction"
+import { ref, Ref } from 'vue';
 
 const readWrite: RelayReadWrite = {read: true, write: true}
 
@@ -75,6 +77,21 @@ export const getAll = async (pubkey: string[] | undefined, kinds: number[], rela
     })
   })
   return all
+}
+export const getHashtags = async ( relays: RelayObject = defaultRelays): Promise<string[]> => {
+  const filter: Filter<number> = {kinds: [1],limit: 100 ,search: 'nostrocket'}
+  const relayList: RelayList = getRelayList(relays, ['read'])
+  const sub: Sub = pool.sub(relayList,[filter])
+  const hashtags: string[] = []
+  const events: Ref<Event<number>[]> = ref([]); // Provide a type for events
+  sub.on('event', event => {
+    console.log('event',event); 
+    events.value = insertEventIntoDescendingList(events.value, event);
+    console.log('events',events.value);
+     events.value.push(event)
+    
+  })
+  return hashtags
 }
 
 export const getMostRecent = async (pubkey: string, kinds: number[], relays: RelayObject = defaultRelays): Promise<Event | null> => {
