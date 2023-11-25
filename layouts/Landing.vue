@@ -37,26 +37,36 @@ const loadHashtags = async () => {
             profitable.
           </h2>
           <h3 class="text-lg mt-8 text-gray-800 dark:text-gray-400">
-            Nostrocket is a **[Self Organizing Unorganization
-            (SOU)](/self-organizing-unorganization.html) factory** built with
-            Bitcoin and Nostr. It provides a hyper-efficient and radically fair
-            way for anyone to collaborate on open source projects for *fun and
-            profit*.
+            Nostrocket is a
+            <a
+              href="/nostrocket/introduction/self-organizing-unorganization"
+              class="extraText"
+              >Self Organizing Unorganization (SOU)] factory</a
+            >
+            built with Bitcoin and Nostr. It provides a hyper-efficient and
+            radically fair way for anyone to collaborate on open source projects
+            for <span class="extraText"> fun and profit</span>.
           </h3>
           <h3 class="text-lg mt-8 text-gray-800 dark:text-gray-400">
-            Nostrocket makes open source projects **hyper-efficient** because
-            work can be done asynchronously without [organizational
-            mutexes](/mutexes.html). It makes them radically fair [add protocol
-            link here] in the way that participants form consensus over the
-            value of each contribution.
+            Nostrocket makes open source projects
+            <span class="extraText">hyper-efficient</span> because work can be
+            done asynchronously without
+            <a href="/nostrocket/introduction/mutexes">organizational mutexes</a
+            >. It makes them radically fair in the way that participants form
+            consensus over the value of each contribution.
           </h3>
           <h3 class="text-lg mt-8 text-gray-800 dark:text-gray-400">
-            It makes projects **rapidly profitable** by providing guard rails
-            against solving problems that are not in the **critical path** to
-            more participation and revenue. It makes them **perpetually
-            sustainable** in the way that they [distribute project
-            revenue](/protocol.html) to project creators, investors, and
-            contributors.
+            It makes projects
+            <span class="extraText">rapidly profitable</span> by providing guard
+            rails against solving problems that are not in the
+            <span class="extraText">critical path</span> to more participation
+            and revenue. It makes them
+            <span class="extraText">perpetually sustainable</span> in the way
+            that they
+            <a href="/nostrocket/introduction/protocol"
+              >distribute project revenue</a
+            >
+            to project creators, investors, and contributors.
           </h3>
         </div>
 
@@ -78,6 +88,14 @@ const loadHashtags = async () => {
             Loading...
           </div>
           <Event v-for="event in listEvents" :key="event.id" :event="event" />
+
+          <NuxtLink
+            v-if="!isLoading"
+            href="/nostrocket"
+            class="text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold"
+          >
+            You have seen it all, go and read the docs!
+          </NuxtLink>
         </div>
       </section>
     </div>
@@ -85,6 +103,13 @@ const loadHashtags = async () => {
 </template>
 
 <style scoped>
+a {
+  text-decoration: underline;
+}
+.extraText {
+  font-weight: bold;
+  color: #9b84e5;
+}
 .GradientTextPurple {
   background: linear-gradient(to right, #7d51fa 40%, #9b84e5 40%, #a08fdb 20%);
   background-size: 200% auto;
