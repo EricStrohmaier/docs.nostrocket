@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5 rounded-3xl bg-[#333333c0] p-5 lg:p-10 overflow-x-scroll ">
+  <div class="my-5 rounded-3xl bg-[#333333db] p-5 lg:p-10 overflow-x-scroll  text-gray-300">
     <div class="flex items-center space-x-2 mb-3">
       <img
         class="w-10 h-10 rounded-full"
@@ -10,7 +10,7 @@
         "
         alt="User Avatar"
       />
-      <div class="text-gray-400">
+      <div class="">
         {{ userMetadata ? userMetadata.name : "Mr. Unknown" }}
       </div>
     </div>

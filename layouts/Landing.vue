@@ -5,6 +5,7 @@ import { getNostrocketContent } from "~~/lib/Nostr";
 import Event from "~~/components/landing/Event.vue";
 
 const listEvents = ref([]);
+const isLoading = ref(true); // Added loading state
 
 onMounted(async () => {
   AOS.init();
@@ -14,9 +15,11 @@ onMounted(async () => {
 const loadHashtags = async () => {
   try {
     listEvents.value = await getNostrocketContent();
+    isLoading.value = false; // Set loading state to false when data is loaded
     console.log("listEvents", listEvents.value);
   } catch (error) {
     console.error("Error loading hashtags", error);
+    isLoading.value = false; // Set loading state to false in case of an error
   }
 };
 </script>
@@ -71,6 +74,9 @@ const loadHashtags = async () => {
         </div>
         <div class="max-w-5xl mx-auto p-5 lg:px-0 mt-10">
           <h2 class="font-bold text-2xl">Latest posts about #Nostrocket</h2>
+          <div v-if="isLoading" class="text-gray-600 dark:text-gray-300 mt-4">
+            Loading...
+          </div>
           <Event v-for="event in listEvents" :key="event.id" :event="event" />
         </div>
       </section>
