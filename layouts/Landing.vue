@@ -21,11 +21,6 @@ const loadHashtags = async () => {
       listEvents.value = JSON.parse(cachedData);
       isLoading.value = false;
 
-      const newData = await getNostrocketContent();
-      listEvents.value = await getNostrocketContent();
-      isLoading.value = false;
-      localStorage.setItem('cachedNostrocketContent', JSON.stringify(listEvents.value));
-    
     } else {
       // If there's no cached data, fetch and store in local storage
       listEvents.value = await getNostrocketContent();
