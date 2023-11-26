@@ -5,21 +5,21 @@ import { getNostrocketContent } from "~~/lib/Nostr";
 import Event from "~~/components/landing/Event.vue";
 
 const listEvents = ref([]);
-const isLoading = ref(true); // Added loading state
+const isLoading = ref(true);
 
 onMounted(async () => {
   AOS.init();
   await loadHashtags();
 });
-
+//todo add to local storage
 const loadHashtags = async () => {
   try {
     listEvents.value = await getNostrocketContent();
-    isLoading.value = false; // Set loading state to false when data is loaded
+    isLoading.value = false; 
     console.log("listEvents", listEvents.value);
   } catch (error) {
     console.error("Error loading hashtags", error);
-    isLoading.value = false; // Set loading state to false in case of an error
+    isLoading.value = false; 
   }
 };
 </script>
