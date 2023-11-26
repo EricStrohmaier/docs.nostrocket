@@ -93,17 +93,18 @@ export const getNostrocketContent = async (relays: RelayObject = defaultRelays):
     });
 
     sub.on('eose', () => {
-      const filteredEvents = events.value.filter((event) => {
+      // const filteredEvents = events.value.filter((event) => {
         
-        //get the nostrocket content from the content haha 
+      //   //get the nostrocket content from the content haha 
 
-        // const contentContainsNostrocket = event.content?.includes('nostrocket') || false;
-        const tagsContainNostrocket = event.tags?.some((tag) => tag[0] === 't' && tag[1] === 'nostrocket') || false;
+      //   // const contentContainsNostrocket = event.content?.includes('nostrocket') || false;
+      //   const tagsContainNostrocket = event.tags?.some((tag) => tag[0] === 't' && tag[1] === 'nostrocket') || false;
 
-        return tagsContainNostrocket;
-        // return contentContainsNostrocket || tagsContainNostrocket;
-      });
-      resolve(filteredEvents);
+      //   return tagsContainNostrocket;
+      //   // return contentContainsNostrocket || tagsContainNostrocket;
+      // });
+      // resolve(filteredEvents);
+      resolve(events.value);
     });
   });
 };
