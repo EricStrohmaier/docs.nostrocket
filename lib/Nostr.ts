@@ -18,8 +18,8 @@ export const defaultRelays: RelayObject = {
 }
 
 export const defaultProfile: IdentityType = {
-  'name': 'a lone Yondarer',
-  'about': 'Just Yondaring about the world. I\'m new to nostr and haven\'t set up my profile yet. Check out https://go.yondar.me',
+  'name': 'We dont know',
+  'about': 'We dont know',
   'picture': 'https://yondar-user-content.s3.us-east-2.amazonaws.com/android-chrome-256x256.png',
   'username': 'a lone Yondarer',
   'display_name': 'a lone Yondarer',
@@ -80,7 +80,7 @@ export const getAll = async (pubkey: string[] | undefined, kinds: number[], rela
 }
 
 export const getNostrocketContent = async (relays: RelayObject = defaultRelays): Promise<Event<number>[]> => {
-  const filter: Filter<number> = { kinds: [1],  search: 'nostrocket' };
+  const filter: Filter<number> = { kinds: [1],limit: 50, search: 'nostrocket' };
   const relayList: RelayList = getRelayList(relays, ['read']);
   const sub: Sub = pool.sub(relayList, [filter]);
 
