@@ -8,22 +8,20 @@ import { ref, Ref } from 'vue';
 const readWrite: RelayReadWrite = {read: true, write: true}
 
 export const defaultRelays: RelayObject = {
-  'wss://yondar.nostr1.com': readWrite,
   'wss://relay.primal.net': readWrite,
   'wss://relay.damus.io': readWrite,
   'wss://relayable.org': readWrite,
-  'wss://relay.nostr.me': readWrite,
   'wss://nos.lol': readWrite,
   'wss://relay.nostr.band': readWrite,
 }
 
 export const defaultProfile: IdentityType = {
-  'name': 'We dont know',
-  'about': 'We dont know',
+  'name': 'We don`t know',
+  'about': 'We don`t know',
   'picture': 'https://yondar-user-content.s3.us-east-2.amazonaws.com/android-chrome-256x256.png',
-  'username': 'a lone Yondarer',
-  'display_name': 'a lone Yondarer',
-  'displayName': 'a lone Yondarer',
+  'username': 'We don`t know',
+  'display_name': 'We don`t know',
+  'displayName': 'We don`t know',
   'nip05': '',
   'pubkey': '0000000000000000000000000000000000000000000000000000000000000000',
 }

@@ -11,15 +11,30 @@ onMounted(async () => {
   AOS.init();
   await loadHashtags();
 });
-//todo add to local storage
+
 const loadHashtags = async () => {
   try {
-    listEvents.value = await getNostrocketContent();
-    isLoading.value = false; 
-    console.log("listEvents", listEvents.value);
+    const cachedData = localStorage.getItem('cachedNostrocketContent');
+
+    // If there's cached data, use it and set loading state to false
+    if (cachedData) {
+      listEvents.value = JSON.parse(cachedData);
+      isLoading.value = false;
+
+      const newData = await getNostrocketContent();
+      // Update the listEvents value with the new data
+      listEvents.value = newData;
+      localStorage.setItem('cachedNostrocketContent', JSON.stringify(newData));
+
+    } else {
+      // If there's no cached data, fetch and store in local storage
+      listEvents.value = await getNostrocketContent();
+      isLoading.value = false;
+      localStorage.setItem('cachedNostrocketContent', JSON.stringify(listEvents.value));
+    }
   } catch (error) {
     console.error("Error loading hashtags", error);
-    isLoading.value = false; 
+    isLoading.value = false;
   }
 };
 </script>
