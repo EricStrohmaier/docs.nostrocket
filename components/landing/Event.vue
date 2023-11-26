@@ -24,7 +24,7 @@
           v-html="sanitizeLink(event.previewLink)"
         ></div>
       </div>
-      <button @click="toggleView">Toggle View</button>
+      <button @click="toggleView">View Raw data</button>
     </div>
   </div>
 </template>
