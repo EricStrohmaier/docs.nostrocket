@@ -15,9 +15,9 @@ onMounted(async () => {
 const loadHashtags = async () => {
   try {
     const cachedData = localStorage.getItem('cachedNostrocketContent');
-
+    
     // If there's cached data, use it and set loading state to false
-    if (cachedData) {
+    if (Array.isArray(cachedData) && cachedData.length === 0) {
       listEvents.value = JSON.parse(cachedData);
       isLoading.value = false;
 
