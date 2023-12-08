@@ -1,4 +1,4 @@
 ---
 navigation: false
-redirect: /nostrocket/introduction
+redirect: /nostrocket/introduction/get-started
 ---

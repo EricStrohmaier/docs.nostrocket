@@ -78,7 +78,7 @@ export const getAll = async (pubkey: string[] | undefined, kinds: number[], rela
 }
 
 export const getNostrocketContent = async (relays: RelayObject = defaultRelays): Promise<Event<number>[]> => {
-  const filter: Filter<number> = { kinds: [1],limit: 50, search: 'nostrocket' };
+  const filter: Filter<number> = { kinds: [1],limit: 25, search: 'nostrocket' };
   const relayList: RelayList = getRelayList(relays, ['read']);
   const sub: Sub = pool.sub(relayList, [filter]);
 
